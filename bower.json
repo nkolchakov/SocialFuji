@@ -1,0 +1,24 @@
+{
+  "name": "team-work-social-it",
+  "description": "spa app that use fameous social network apis",
+  "main": "app.js",
+  "authors": [
+    "Team Fujin"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7",
+    "toastr": "^2.1.3"
+  }
+}
