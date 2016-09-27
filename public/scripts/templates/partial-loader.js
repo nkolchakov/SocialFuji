@@ -1,4 +1,5 @@
 'use strict'
+import 'jquery'
 const partialLoader = (function (){
     const cache = {};
     
@@ -9,7 +10,7 @@ const partialLoader = (function (){
                 resolve(cache[partialName]);
             }
 
-            $.get(`./scripts/templates/partials/${partialName}.hb`)
+            $.get(`/scripts/templates/partials/${partialName}.hb`)
             .done((data) => {
                 let partial = Handlebars.compile(data);
                 cache.partialName = partial;
