@@ -13,7 +13,7 @@ const partialLoader = (function (){
             $.get(`/scripts/templates/partials/${partialName}.hb`)
             .done((data) => {
                 let partial = Handlebars.compile(data);
-                cache.partialName = partial;
+                cache[partialName] = partial;
                 resolve(partial);
             });
         });
