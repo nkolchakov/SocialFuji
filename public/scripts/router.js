@@ -1,5 +1,3 @@
-import 'navigo'
-
 const router = (function (){
     let navigo;
     
@@ -7,7 +5,7 @@ const router = (function (){
         navigo = new Navigo(null, false);
 
         navigo.on ('/index', function () {
-            
+            console.log('loaded');
         }).resolve();
         
     }

@@ -11,7 +11,8 @@ SystemJS.config({
 
         //libs
         'jquery': '/libs/jquery/dist/jquery.js',
-        'navigo': '/navigo/lib/navigo.js'
-        
+        'handlebars': '/handlebars/dist/handlebars.js',
+        'bootstrap': '/libs/bootstrap/dist/js/bootstrap.js',
+        'fb' : 'https://connect.facebook.net/en_US/sdk.js'
     }
 });

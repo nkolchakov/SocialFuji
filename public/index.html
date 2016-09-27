@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Fujin Network</title>
+    <link rel="stylesheet" type="text/css" href="libs/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
     <script src= "systemjs/dist/system.js"></script>
     <script src="config.js"></script>
     <script src="navigo/lib/navigo.js"></script>
@@ -11,12 +14,60 @@
 </head>
 
 <body>
-    <div id="header">
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <p class="navbar-brand navbar-left">Fujin Network</p>
+                    
+                </div>
+            </div>
+        </nav>
+
+        <!--
         <h1>Fujin Network</h1>
         <h2>All important social media posts in one app</h2>
         <img src="images/Fujin.png" alt="logo">
+        -->
+    </header>
+    <div id="wrapper" class="wrapper container center-block">
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                <a href="#"><img src="images/Facebook.png" alt="Facebook"></a>
+                <div class="caption">
+                    <h3>Thumbnail label</h3>
+                    <p>...</p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                <a href="#"><img src="images/Instagram.png" alt="Instagram"></a>
+                <div class="caption">
+                    <h3>Thumbnail label</h3>
+                    <p>...</p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                <a href="#"><img src="images/LinkedIn.png" alt="LinkedIn"></a>
+                <div class="caption">
+                    <h3>Thumbnail label</h3>
+                    <p>...</p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="nav">
+    <!--
+        <div id="nav">
         <ul>
             <li>
                 <a href="#"><img src="images/Facebook.png" alt="Facebook"></a>
@@ -38,16 +89,25 @@
             </li>
         </ul>
     </div>
+
+
+        -->
+
+
     <div id="content">
         <!--Тук по подразбиране може да се извежда темплейта за логин във фейсбук facebook.handlebars, а при избор на друга мрежа да се променя-->
         <!--след регистрация/логин тук ще се зарежда селекцията от постове-->
     </div>
-    <div id="copyright">
-        <p>JavaScript Applications &copy; 2016 <a href="https://telerikacademy.com/">Telerik Academy</a></p>
 
-        <p>Application by <a href="#Линк към страницата, където сме качили проекта(http://appharbor.com)" target="_blanc">Fujin Team</a></p>
 
-    </div>
+    <footer class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <p class="navbar-left">JavaScript Applications &copy; 2016 <a href="https://telerikacademy.com/">Telerik Academy</a></p>
+
+                <p class="navbar-right ">Application by <a href="#Линк към страницата, където сме качили проекта(http://appharbor.com)" target="_blanc">Fujin Team</a></p>   
+            </div>
+        </div>
+    </footer>
 </body>
-
 </html>
