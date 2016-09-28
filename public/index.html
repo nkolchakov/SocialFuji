@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Fujin Network</title>
-    <link rel="stylesheet" type="text/css" href="libs/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="libs/bootstrap/dist/css/bootstrap.min.css" />   
     <link rel="stylesheet" type="text/css" href="css/style.css" />
 
     <script src="systemjs/dist/system.js"></script>
@@ -19,12 +19,11 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <img src="images/Fujin.png" alt="logo" class="">
+                    <!--<img src="images/Fujin.png" alt="logo" class="">-->
                     <p class="navbar-brand navbar-left">Fujin Network</p>
                 </div>
             </div>
             <!--<ul class="nav nav-pills pull-right">
-                    <li role="presentation"><a href="#/">Home</a></li>
                     <li role="presentation"><a href="#/">Logout</a></li>
             </ul>-->
         </nav>
@@ -35,24 +34,31 @@
             <p class="lead">All Your Important Social Media In One App</p>
             <p>Select your favourite social media networks and get all new posts in one place</p>
             
-            <a href="#/login" class="btn btn-lg btn-success">Join us</a>
+            <!--<a href="#/login" class="btn btn-lg btn-success">Join us</a>-->
         </div>
     </header>
     <div id="wrapper" class="wrapper container center-block">
         <div class="row">
-            <div class="col-sm-6 col-md-4">
+            <div class="col-md-2">
                 <div class="thumbnail">
                     <a href="#"><img src="images/Facebook.png" alt="Facebook"></a>
                     <div class="caption">
                         <h3>Thumbnail label</h3>
                         <p>...</p>
-                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default"
-                                role="button">Button</a></p>
+                        <p><a href="#" class="btn btn-primary" role="button">Button</a>
+                        <a href="#" class="btn btn-default" role="button">Button</a></p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-4">
+            <div id="content" class="col-md-10">
+                <!--Тук по подразбиране може да се извежда темплейта за логин във фейсбук facebook.handlebars, а при избор на друга мрежа да се променя-->
+                <!--след регистрация/логин тук ще се зарежда селекцията от постове-->
+            </div>
+        </div>
+
+            <div class="row">
+            <div class="col-md-2">
                 <div class="thumbnail">
                     <a href="#"><img src="images/Instagram.png" alt="Instagram"></a>
                     <div class="caption">
@@ -63,8 +69,10 @@
                     </div>
                 </div>
             </div>
+            </div>
 
-            <div class="col-sm-6 col-md-4">
+            <div class="row">
+            <div class="col-md-2">
                 <div class="thumbnail">
                     <a href="#"><img src="images/LinkedIn.png" alt="LinkedIn"></a>
                     <div class="caption">
@@ -102,14 +110,7 @@
     </div>
 
 
-        -->
-
-
-    <div id="content">
-        <!--Тук по подразбиране може да се извежда темплейта за логин във фейсбук facebook.handlebars, а при избор на друга мрежа да се променя-->
-        <!--след регистрация/логин тук ще се зарежда селекцията от постове-->
-    </div>
-
+        -->  
 
     <footer class="footer">
         <div class="container-fluid">

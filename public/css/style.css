@@ -2,6 +2,11 @@ body {
     margin: 2%
 }
 
+.wrapper{
+    margin: 0;
+    padding: 0
+}
+
 .jumbotron {
     padding: 3%
 }
