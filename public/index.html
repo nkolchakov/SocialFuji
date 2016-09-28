@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Fujin Network</title>
-    <link rel="stylesheet" type="text/css" href="libs/bootstrap/dist/css/bootstrap.min.css" />   
+    <link rel="stylesheet" type="text/css" href="libs/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.min.css">
 
     <script src="systemjs/dist/system.js"></script>
     <script src="config.js"></script>
@@ -16,76 +17,91 @@
 <body>
     <header>
         <div class="header clearfix">
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <!--<img src="images/Fujin.png" alt="logo" class="">-->
-                    <p class="navbar-brand navbar-left">Fujin Network</p>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <!--<img src="images/Fujin.png" alt="logo" class="img img-logo">-->
+                        <p class="navbar-brand navbar-left">Fujin Network</p>
+                    </div>
                 </div>
-            </div>
-            <!--<ul class="nav nav-pills pull-right">
-                    <li role="presentation"><a href="#/">Logout</a></li>
-            </ul>-->
-        </nav>
+                <ul class="nav nav-pills">
+                    <li class="dropdown pull-right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Login <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#"><img src="./images/Facebook.png" class="login-images"> Login with Facebook</a>
+                            </li>
+                            <li>
+                                <a href="#"><img src="./images/LinkedIn.png" class="login-images"> Login with LinkedIn</a>
+                            </li>
+                            <li>
+                                <a href="#"><img src="./images/Instagram.png" class="login-images"> Login with Instagram</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#">About Fuji</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
         </div>
 
         <div class="jumbotron">
             <h1>Fujin Network</h1>
             <p class="lead">All Your Important Social Media In One App</p>
             <p>Select your favourite social media networks and get all new posts in one place</p>
-            
+
             <!--<a href="#/login" class="btn btn-lg btn-success">Join us</a>-->
         </div>
     </header>
     <div id="wrapper" class="wrapper container center-block">
-        <div class="row">
-            <div class="col-md-2">
-                <div class="thumbnail">
-                    <a href="#"><img src="images/Facebook.png" alt="Facebook"></a>
-                    <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <p>...</p>
-                        <p><a href="#" class="btn btn-primary" role="button">Button</a>
-                        <a href="#" class="btn btn-default" role="button">Button</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="content" class="col-md-10">
-                <!--Тук по подразбиране може да се извежда темплейта за логин във фейсбук facebook.handlebars, а при избор на друга мрежа да се променя-->
-                <!--след регистрация/логин тук ще се зарежда селекцията от постове-->
-            </div>
-        </div>
+        <div class="container-fluid">
 
             <div class="row">
-            <div class="col-md-2">
-                <div class="thumbnail">
-                    <a href="#"><img src="images/Instagram.png" alt="Instagram"></a>
-                    <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <p>...</p>
-                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default"
-                                role="button">Button</a></p>
+                <div class="col-sm-2 col-md-2">
+                    <div class="thumbnail">
+                        <a href="#"><img src="images/Facebook.png" alt="Facebook"></a>
+                        <div class="caption">
+                            <h3>Thumbnail label</h3>
+                            <p>...</p>
+                            <p><a href="#" class="btn btn-primary" role="button">Button</a>
+                                <a href="#" class="btn btn-default" role="button">Button</a></p>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
 
             <div class="row">
-            <div class="col-md-2">
-                <div class="thumbnail">
-                    <a href="#"><img src="images/LinkedIn.png" alt="LinkedIn"></a>
-                    <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <p>...</p>
-                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default"
-                                role="button">Button</a></p>
+                <div class="col-sm-2 col-md-2">
+                    <div class="thumbnail">
+                        <a href="#"><img src="images/Instagram.png" alt="Instagram"></a>
+                        <div class="caption">
+                            <h3>Thumbnail label</h3>
+                            <p>...</p>
+                            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default"
+                                    role="button">Button</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!--
+
+            <div class="row">
+                <div class="col-sm-2 col-md-2">
+                    <div class="thumbnail">
+                        <a href="#"><img src="images/LinkedIn.png" alt="LinkedIn"></a>
+                        <div class="caption">
+                            <h3>Thumbnail label</h3>
+                            <p>...</p>
+                            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default"
+                                    role="button">Button</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--
         <div id="nav">
         <ul>
             <li>
@@ -110,7 +126,19 @@
     </div>
 
 
-        -->  
+        -->
+            <div id="content" class="col-md-10 col-sm-10">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia adipisci sequi aut! Repellendus ea sunt
+                    iste explicabo quas. Architecto modi nostrum distinctio dicta ipsa dolor quasi mollitia reiciendis, alias
+                    dolore.
+                </p>
+                <!--Тук по подразбиране може да се извежда темплейта за логин във фейсбук facebook.handlebars, а при избор на друга мрежа да се променя-->
+                <!--след регистрация/логин тук ще се зарежда селекцията от постове-->
+            </div>
+
+        </div>
+
+    </div>
 
     <footer class="footer">
         <div class="container-fluid">
