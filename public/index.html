@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="libs/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
 
-    <script src= "systemjs/dist/system.js"></script>
+    <script src="systemjs/dist/system.js"></script>
     <script src="config.js"></script>
     <script src="navigo/lib/navigo.js"></script>
     <script>System.import('main')</script>
@@ -15,53 +15,64 @@
 
 <body>
     <header>
+        <div class="header clearfix">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
+                    <img src="images/Fujin.png" alt="logo" class="">
                     <p class="navbar-brand navbar-left">Fujin Network</p>
-                    
                 </div>
             </div>
+            <!--<ul class="nav nav-pills pull-right">
+                    <li role="presentation"><a href="#/">Home</a></li>
+                    <li role="presentation"><a href="#/">Logout</a></li>
+            </ul>-->
         </nav>
+        </div>
 
-        <!--
-        <h1>Fujin Network</h1>
-        <h2>All important social media posts in one app</h2>
-        <img src="images/Fujin.png" alt="logo">
-        -->
+        <div class="jumbotron">
+            <h1>Fujin Network</h1>
+            <p class="lead">All Your Important Social Media In One App</p>
+            <p>Select your favourite social media networks and get all new posts in one place</p>
+            
+            <a href="#/login" class="btn btn-lg btn-success">Join us</a>
+        </div>
     </header>
     <div id="wrapper" class="wrapper container center-block">
         <div class="row">
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
-                <a href="#"><img src="images/Facebook.png" alt="Facebook"></a>
-                <div class="caption">
-                    <h3>Thumbnail label</h3>
-                    <p>...</p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                <a href="#"><img src="images/Instagram.png" alt="Instagram"></a>
-                <div class="caption">
-                    <h3>Thumbnail label</h3>
-                    <p>...</p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                </div>
+                    <a href="#"><img src="images/Facebook.png" alt="Facebook"></a>
+                    <div class="caption">
+                        <h3>Thumbnail label</h3>
+                        <p>...</p>
+                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default"
+                                role="button">Button</a></p>
+                    </div>
                 </div>
             </div>
 
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
-                <a href="#"><img src="images/LinkedIn.png" alt="LinkedIn"></a>
-                <div class="caption">
-                    <h3>Thumbnail label</h3>
-                    <p>...</p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                    <a href="#"><img src="images/Instagram.png" alt="Instagram"></a>
+                    <div class="caption">
+                        <h3>Thumbnail label</h3>
+                        <p>...</p>
+                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default"
+                                role="button">Button</a></p>
+                    </div>
                 </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <a href="#"><img src="images/LinkedIn.png" alt="LinkedIn"></a>
+                    <div class="caption">
+                        <h3>Thumbnail label</h3>
+                        <p>...</p>
+                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default"
+                                role="button">Button</a></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -100,14 +111,15 @@
     </div>
 
 
-    <footer class="navbar navbar-default">
+    <footer class="footer">
         <div class="container-fluid">
-            <div class="navbar-header">
+            <div class="footer-header">
                 <p class="navbar-left">JavaScript Applications &copy; 2016 <a href="https://telerikacademy.com/">Telerik Academy</a></p>
 
-                <p class="navbar-right ">Application by <a href="#Линк към страницата, където сме качили проекта(http://appharbor.com)" target="_blanc">Fujin Team</a></p>   
+                <p class="navbar-left "> Application by <a href="#Линк към страницата, където сме качили проекта(http://appharbor.com)" target="_blanc">Fujin Team</a></p>
             </div>
         </div>
     </footer>
 </body>
+
 </html>

@@ -1,0 +1,12 @@
+body {
+    margin: 2%
+}
+
+.jumbotron {
+    padding: 3%
+}
+
+.thumbnail img {
+    max-width: 100%
+}
+
