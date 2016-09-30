@@ -1,0 +1,16 @@
+<h1>Instagram</h1>
+<hr>
+<form>
+    <label>search by #tagname:</label>
+    <input type="text" id='input-tagname-input'>
+    <button id='search-tagname-btn'>SEARCH</button id=''>
+</form>
+<hr>
+<br><br><br>
+{{#data}}
+    <p font-size='30px'>{{caption.text}} </p>
+    <img src="{{images.standard_resolution.url}}"></img>
+    <hr>
+    <br>
+{{/data}}
+

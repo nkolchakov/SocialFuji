@@ -2,7 +2,12 @@ body {
     margin: 2%
 }
 
-.wrapper{
+p,
+label {
+    font-size: 27px;
+}
+
+.wrapper {
     margin: 0;
     padding: 0
 }
@@ -15,13 +20,10 @@ body {
     max-width: 100%
 }
 
-.login-images{
+.login-images {
     width: 30%;
 }
 
 .dropdown-menu li {
     width: 230px;
 }
-
-
-
