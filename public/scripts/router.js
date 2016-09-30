@@ -2,29 +2,19 @@ const router = (function() {
     let navigo;
 
     function init() {
-        navigo = new Navigo(null, false);
+        navigo = new Navigo(null, true);
 
         navigo
             .on('/index', function() {
                 console.log('loaded');
             })
+            .on('/instagram/:tagSearch', (params) => {
+                console.log(params.tagSearch);
+                instaReq.getTag(params.tagSearch)
+            })
             .on('/instagram', () => {
-                var feed = new Instafeed({
-                    get: 'tagged',
-                    tagName: 'gaming',
-                    userID: ' 3008598822',
-                    accessToken: '3008598822.ba4c844.379aabfdd8214190868c0f2aa93350ab',
-                    success: (data) => {
-                        templateLoader.get('instagram')
-                            .then(funcTemplate => {
-                                let html = funcTemplate(data);
-                                $('#content').html(html);
-                            })
-                    }
+                instaReq.getTag('instagram');
 
-
-                });
-                feed.run();
             })
             .on('/facebook', () => {
                 templateLoader.get('facebook')

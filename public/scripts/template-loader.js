@@ -3,7 +3,6 @@ var templateLoader = (function() {
 
     function get(templateName) {
 
-
         let promise = new Promise((resolve, reject) => {
             if (cache[templateName]) {
                 resolve(cache[templateName]);
