@@ -1,11 +1,11 @@
-const router = (function () {
+const router = (function() {
     let navigo;
 
     function init() {
         navigo = new Navigo(null, false);
 
         navigo
-            .on('/index', function () {
+            .on('/index', function() {
                 console.log('loaded');
             })
             .on('/instagram', () => {
@@ -54,6 +54,6 @@ const router = (function () {
     return {
         init
     };
-} ());
+}());
 
 export { router };
