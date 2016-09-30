@@ -20,7 +20,9 @@
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <!--<img src="images/Fujin.png" alt="logo" class="img img-logo">-->
+                        <a class="navbar-brand" href="#/index">
+                            <img alt="Brand" src="images/FujinTest.png" width="100px">
+                        </a>
                         <p class="navbar-brand navbar-left">Fujin Network</p>
                     </div>
                 </div>
@@ -29,18 +31,18 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Login <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="#"><img src="./images/Facebook.png" class="login-images"> Login with Facebook</a>
+                                <a id="btn-dropdown-facebook-login" href="#/facebook-login"><img src="./images/Facebook.png" class="login-images"> Login with Facebook</a>
                             </li>
                             <li>
-                                <a href="#"><img src="./images/LinkedIn.png" class="login-images"> Login with LinkedIn</a>
+                                <a id="btn-dropdown-twitter-login" href="#/twitter-login"><img src="./images/Twitter.png" class="login-images"> Login with Twitter</a>
                             </li>
                             <li>
-                                <a href="#"><img src="./images/Instagram.png" class="login-images"> Login with Instagram</a>
+                                <a id="btn-dropdown-instagram-login" href="#/instagram-login"><img src="./images/Instagram.png" class="login-images"> Login with Instagram</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="#">About Fuji</a></li>
+                            <li><a href="#/about">About Fujin</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">Logout</a></li>
+                            <li><a href="#/logout">Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -56,52 +58,39 @@
         </div>
     </header>
     <div id="wrapper" class="wrapper container center-block">
-        <div class="container-fluid">
-
-            <div class="row">
-                <div class="col-sm-2 col-md-2">
+            <div class="col-md-3">
+                <div class="row">
                     <div class="thumbnail">
                         <a href="#"><img src="images/Facebook.png" alt="Facebook"></a>
                         <div class="caption">
-                            <h3>Thumbnail label</h3>
-                            <p>...</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Button</a>
-                                <a href="#" class="btn btn-default" role="button">Button</a></p>
+                            <h3>Add Your Facebook Newest Posts</h3>
+                            <p><a id="btn-facebook-login" href="#/facebook-login" class="btn btn-success" role="button">Add</a>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="col-sm-2 col-md-2">
+                <div class="row">
                     <div class="thumbnail">
                         <a href="#"><img src="images/Instagram.png" alt="Instagram"></a>
                         <div class="caption">
-                            <h3>Thumbnail label</h3>
-                            <p>...</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default"
-                                    role="button">Button</a></p>
+                            <h3>Add Your Instagram Newest Posts</h3>
+                            <p><a id="btn-instagram-login" href="#/instagram-login" class="btn btn-success" role="button">Add</a>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="col-sm-2 col-md-2">
+                <div class="row">
                     <div class="thumbnail">
-                        <a href="#"><img src="images/LinkedIn.png" alt="LinkedIn"></a>
+                        <a href="#"><img src="images/Twitter.png" alt="Twitter"></a>
                         <div class="caption">
-                            <h3>Thumbnail label</h3>
-                            <p>...</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default"
-                                    role="button">Button</a></p>
+                            <h3>Add Your Twitter Newest Posts</h3>
+                            <p><a id="btn-twitter-login" href="#/twitter-login" class="btn btn-success" role="button">Add</a>
                         </div>
                     </div>
                 </div>
-            </div>
 
 
-            <!--
+                <!--
         <div id="nav">
         <ul>
             <li>
@@ -127,25 +116,19 @@
 
 
         -->
-            <div id="content" class="col-md-10 col-sm-10">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia adipisci sequi aut! Repellendus ea sunt
-                    iste explicabo quas. Architecto modi nostrum distinctio dicta ipsa dolor quasi mollitia reiciendis, alias
-                    dolore.
-                </p>
+            </div>
+
+            <div id="content" class="col-md-9 col-sm-9">
                 <!--Тук по подразбиране може да се извежда темплейта за логин във фейсбук facebook.handlebars, а при избор на друга мрежа да се променя-->
                 <!--след регистрация/логин тук ще се зарежда селекцията от постове-->
             </div>
-
-        </div>
-
     </div>
 
-    <footer class="footer">
+    <footer class="footer text-center">
         <div class="container-fluid">
             <div class="footer-header">
-                <p class="navbar-left">JavaScript Applications &copy; 2016 <a href="https://telerikacademy.com/">Telerik Academy</a></p>
-
-                <p class="navbar-left "> Application by <a href="#Линк към страницата, където сме качили проекта(http://appharbor.com)" target="_blanc">Fujin Team</a></p>
+                <p class="navbar-center">JavaScript Applications &copy; 2016 <a href="https://telerikacademy.com/">Telerik Academy</a></p>
+                <p class="navbar-center "> Application by <a href="#Линк към страницата, където сме качили проекта(http://appharbor.com)" target="_blanc">Fujin Team</a></p>
             </div>
         </div>
     </footer>
