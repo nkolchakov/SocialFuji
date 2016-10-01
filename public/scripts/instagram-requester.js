@@ -17,58 +17,89 @@ var instaReq = (function() {
     }
 
     function removeHashtagsFromCaption(data) {
-        for (post of data.data) {
+        let d = data;
+        for (post of d.data) {
             post.caption.text = post.caption.text.substr(0, post.caption.text.indexOf('#'));
         }
-
-        return data;
-
+        return d;
     }
+
+
 
     function getUser(username) {
         let id;
+        let promise;
         getUserIdByName(username)
-            .then(response => {
-                id = response.data[0].id;
+            .then((response) => {
+                console.log(response);
+                if (response.data.length <= 1) {
+                    id = response.data[0].id;
+                    promise = new Promise((resolve, reject) => {
+                        var feed = new Instafeed({
+                            get: 'user',
+                            userId: id,
+                            accessToken: ACCESS_TOKEN,
+                            success: (data) => {
+                                templateLoader.get('instagram')
+                                    .then(funcTemplate => {
+                                        let modifiedData = removeHashtagsFromCaption(data);
+                                        console.log(modifiedData);
+                                        let html = funcTemplate(modifiedData);
+                                        $('#content').html(html);
+                                    })
+                                    // attach event to search button after template is created
+
+                            },
+                            error: () => {
+                                alert('Profile is private');
+                            },
+                            mock: () => {
+
+                            }
+                        });
+                        resolve(feed.run());
+                        console.log('first');
+                    })
+                } else {
+                    console.log('hereee');
+                    promise = new Promise((resolve, reject) => {
+                        templateLoader.get('instagram-profiles')
+                            .then(funcTemplate => {
+                                let html = funcTemplate(response);
+                                $('#content').html(html);
+                            })
+                            .then(() => {
+                                $('.redirect-to-profile').on('click', function(ev) {
+                                    let anchor = $(ev.target);
+                                    console.log(anchor);
+                                    let username = anchor.attr('tag');
+                                    // redirect to profile
+
+
+                                })
+                            });;
+                        console.log('first');
+                    });
+                }
+                return promise;
             })
             .then(() => {
-                let promise = new Promise((resolve, reject) => {
-                    var feed = new Instafeed({
-                        get: 'user',
-                        userId: id,
-                        accessToken: ACCESS_TOKEN,
-                        success: (data) => {
-                            templateLoader.get('instagram')
-                                .then(funcTemplate => {
-                                    console.log(data);
-                                    data = removeHashtagsFromCaption(data);
-                                    let html = funcTemplate(data);
-                                    $('#content').html(html);
-                                })
-                                // attach event to search button after template is created
-                                .then(() => {
-                                    $('#search-tagname-btn').on('click', function() {
-                                        let searchVal = $('#input-tagname-input').val();
-                                        let redirectedUrl;
-                                        if (searchVal.indexOf('#') >= 0) {
-                                            let modifiedTag = searchVal.substring(1);
-                                            console.log(modifiedTag);
-                                            redirectedUrl = '#/instagram/tag=' + modifiedTag;
-                                        } else {
-                                            redirectedUrl = '#/instagram/user=' + searchVal;
-                                        }
-                                        window.location.href = redirectedUrl;
-                                    })
-                                });
-                        },
-                        mock: () => {
-
-                        }
-                    });
-                    resolve(feed.run());
+                $('#search-tagname-btn').on('click', function() {
+                    console.log('clicked');
+                    let searchVal = $('#input-tagname-input').val();
+                    let redirectedUrl;
+                    if (searchVal.indexOf('#') >= 0) {
+                        let modifiedTag = searchVal.substring(1);
+                        console.log(modifiedTag);
+                        redirectedUrl = '#/instagram/tag=' + modifiedTag;
+                    } else {
+                        searchVal = searchVal.replace(/\s+/g, '');
+                        searchVal.toLowerCase();
+                        redirectedUrl = '#/instagram/user=' + searchVal;
+                    }
+                    window.location = redirectedUrl;
                 })
-                return promise;
-            });
+            });;
     }
 
     function getTag(tagName) {
@@ -94,11 +125,16 @@ var instaReq = (function() {
                                     let modifiedTag = searchVal.substring(1);
                                     redirectedUrl = '#/instagram/tag=' + modifiedTag;
                                 } else {
+                                    searchVal = searchVal.replace(/\s+/g, '');
+                                    searchVal.toLowerCase();
                                     redirectedUrl = '#/instagram/user=' + searchVal;
                                 }
-                                window.location.href = redirectedUrl;
+                                window.location = redirectedUrl;
                             })
                         });
+                },
+                error: () => {
+                    alert('Profile is private');
                 },
                 mock: () => {
 
