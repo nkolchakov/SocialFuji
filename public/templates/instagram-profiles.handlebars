@@ -1,0 +1,17 @@
+<h1>Instagram</h1>
+<hr>
+<form>
+    <label>Search by #tagname or username :</label>
+    <input type="text" id='input-tagname-input'>
+    <button class="btn btn-success" id='search-tagname-btn'>Go!</button id=''>
+</form>
+<hr>
+<br><br><br>
+{{#data}}
+    <p><a tag='{{username}}' class='redirect-to-profile' href="#/instagram/user={{username}}">{{full_name}} ({{username}})</a></p>
+    <img src="{{profile_picture}}"></img>
+    
+    <hr>
+    <br>
+{{/data}}
+
