@@ -2,10 +2,18 @@ body {
     margin: 2%
 }
 
-p,
+#nav-logo {
+    text-decoration: none;
+}
+
+/*p,
 label,
 a {
     font-size: 27px;
+}*/
+
+.search-label {
+    font-size: 1.6em;
 }
 
 .wrapper {
@@ -13,8 +21,17 @@ a {
     padding: 0
 }
 
+#content {
+    margin: 0;
+    padding-left: 5%;
+}
+
 .jumbotron {
     padding: 3%
+}
+
+.thumbnail {
+    border: none;
 }
 
 .thumbnail img {
@@ -27,4 +44,8 @@ a {
 
 .dropdown-menu li {
     width: 230px;
+}
+
+.glyphicon {
+    font-size: 2em;
 }

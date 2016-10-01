@@ -2,14 +2,19 @@ const router = (function() {
     let navigo;
 
     function init() {
-        navigo = new Navigo(null, true);
+        navigo = new Navigo(null, false);
 
         navigo
             .on('/index', function() {
+                templateLoader.get('home')
+                    .then(funcTemplate => {
+                        let html = funcTemplate();
+                        $('#content').html(html);
+                    });
                 console.log('loaded');
             })
             .on('/instagram/tag=:tag', (params) => {
-                instaReq.getTag(params.tag)
+                instaReq.getTag(params.tag);
             })
             .on('/instagram/user=:user', (params) => {
                 instaReq.getUser(params.user);
