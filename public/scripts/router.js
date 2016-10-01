@@ -32,16 +32,31 @@ const router = (function() {
                     });
             })
             .on('/facebook-login', () => {
-
+                 templateLoader.get('facebook-login')
+                    .then(funcTemplate => {
+                        let html = funcTemplate();
+                        $('#content').html(html);
+                    });
             })
             .on('/twitter-login', () => {
-
+                templateLoader.get('tweeter-login')
+                    .then(funcTemplate => {
+                        let html = funcTemplate();
+                        $('#content').html(html);
+                    });
             })
-            .on('/instagram-login', () => {
-
+            .on('/tweeter', () => {
+                templateLoader.get('tweeter')
+                    .then(funcTemplate => {
+                        let html = funcTemplate();
+                        $('#content').html(html);
+                    });
             })
+            // .on('/instagram-login', () => {
+
+            // })
             .on('/about', () => {
-
+                window.location = "#/index";
             })
             .on('/logout', () => {
 
