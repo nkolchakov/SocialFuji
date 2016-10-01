@@ -39,14 +39,14 @@ const router = (function() {
                     });
             })
             .on('/twitter-login', () => {
-                templateLoader.get('tweeter-login')
+                templateLoader.get('twitter-login')
                     .then(funcTemplate => {
                         let html = funcTemplate();
                         $('#content').html(html);
                     });
             })
-            .on('/tweeter', () => {
-                templateLoader.get('tweeter')
+            .on('/twitter', () => {
+                templateLoader.get('twitter')
                     .then(funcTemplate => {
                         let html = funcTemplate();
                         $('#content').html(html);
@@ -59,7 +59,7 @@ const router = (function() {
                 window.location = "#/index";
             })
             .on('/logout', () => {
-
+                
             })
             .resolve();
     }
