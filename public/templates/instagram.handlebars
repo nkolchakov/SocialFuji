@@ -1,15 +1,20 @@
 <h1>Instagram</h1>
+<h1>Results for {{data.[0].user.full_name}}</h1>
 <hr>
 <form>
-    <label>search by #tagname:</label>
+    <label>Search by #tagname or username :</label>
     <input type="text" id='input-tagname-input'>
-    <button class="btn btn-success" id='search-tagname-btn'>SEARCH</button id=''>
+    <button class="btn btn-success" id='search-tagname-btn'>Go!</button id=''>
 </form>
 <hr>
 <br><br><br>
 {{#data}}
-    <p font-size='30px'>{{caption.text}} </p>
+    <p><a>{{user.full_name}}</a>: {{caption.text}}</p>
     <img src="{{images.standard_resolution.url}}"></img>
+    <p><strong>{{likes.count}}</strong> &#128077;</p>
+    {{#tags}}
+        <a href="#/instagram/tag={{this}}">#{{this}}</a>
+    {{/tags}}
     <hr>
     <br>
 {{/data}}

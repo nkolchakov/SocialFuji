@@ -8,12 +8,15 @@ const router = (function() {
             .on('/index', function() {
                 console.log('loaded');
             })
-            .on('/instagram/:tagSearch', (params) => {
-                console.log(params.tagSearch);
-                instaReq.getTag(params.tagSearch)
+            .on('/instagram/tag=:tag', (params) => {
+                instaReq.getTag(params.tag)
+            })
+            .on('/instagram/user=:user', (params) => {
+                instaReq.getUser(params.user);
             })
             .on('/instagram', () => {
-                instaReq.getTag('instagram');
+                // home page of instagram, show #welcome posts
+                instaReq.getTag('welcome');
 
             })
             .on('/facebook', () => {

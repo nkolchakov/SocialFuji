@@ -3,7 +3,8 @@ body {
 }
 
 p,
-label {
+label,
+a {
     font-size: 27px;
 }
 
