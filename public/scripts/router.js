@@ -1,11 +1,11 @@
-const router = (function() {
+const router = (function () {
     let navigo;
 
     function init() {
         navigo = new Navigo(null, false);
 
         navigo
-            .on('/index', function() {
+            .on('/index', function () {
                 templateLoader.get('home')
                     .then(funcTemplate => {
                         let html = funcTemplate();
@@ -40,27 +40,71 @@ const router = (function() {
                     });
             })
             .on('/twitter-login', () => {
-                templateLoader.get('twitter-login')
-                    .then(funcTemplate => {
-                        let html = funcTemplate();
-                        $('#content').html(html);
-                    });
+                $.getJSON('api/sign')
+                    .done((requestToken) => {
+                        window.location = "https://api.twitter.com/oauth/authenticate?oauth_token=" + requestToken.result;
+                    })
+                    .fail();
             })
             .on('/twitter', () => {
-                templateLoader.get('twitter')
-                    .then(funcTemplate => {
-                        let html = funcTemplate();
-                        $('#content').html(html);
-                    });
+                // templateLoader.get('twitter')
+                //     .then(funcTemplate => {
+                //         let html = funcTemplate();
+                //         $('#content').html(html);
+                //     });
+                let loadData = new Promise((resolve, reject) => {
+                    $.getJSON('api/twits')
+                        .done(resolve)
+                        .fail(reject);
+                });
+
+                Promise.all([
+                    loadData,
+                    templateLoader.get('twitter')
+                ]).then((response) => {
+                    let data = {},
+                        twits = response[0].result,
+                        template = response[1];
+
+                    data.twits = twits;
+                    console.log(data);
+                    let html = template(data);
+                    $('#content').html(html);
+                });
             })
             // .on('/instagram-login', () => {
 
-        // })
-        .on('/about', () => {
+            // })
+            .on('/about', () => {
                 window.location = "#/index";
             })
             .on('/logout', () => {
 
+            })
+            .on(/oauth/, () => {
+                let oauth_verifier = location.href.split('verifier=')[1];
+
+                let verify = new Promise((resolve, reject) => {
+                    $.ajax({
+                        url: 'api/authorization',
+                        method: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            verifier: oauth_verifier
+                        }),
+                        success: function (responese) {
+                            resolve();
+                        },
+                        error: function (err) {
+                            resolve();
+                        }
+                    });
+                });
+
+                verify
+                    .then(() => {
+                        navigo.navigate('/twitter');
+                    });
             })
             .resolve();
     }
@@ -68,6 +112,6 @@ const router = (function() {
     return {
         init
     };
-}());
+} ());
 
 export { router };

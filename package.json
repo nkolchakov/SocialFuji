@@ -9,10 +9,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "handlebars": "^4.0.5",
     "navigo": "^3.0.0",
     "systemjs": "^0.19.39",
-    "systemjs-plugin-babel": "0.0.15"
+    "systemjs-plugin-babel": "0.0.15",
+    "twitter-node-client": "0.0.6"
   }
 }
