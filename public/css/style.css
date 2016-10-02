@@ -1,5 +1,6 @@
 body {
-    margin: 2%
+    margin: 0;
+    padding: 0;
 }
 
 #nav-logo {
@@ -28,12 +29,13 @@ body {
     border: none;
 }
 
-.caption h3 {
-    font-size: 1.6em;
+.caption {
+    padding: 0;
 } 
 
 .thumbnail img {
-    max-width: 100%
+    width: 80%;
+    margin: 1%;
 }
 
 .well {
@@ -59,24 +61,41 @@ a {
 }*/
 
 .panel-heading {
-    font-size: 1.3em;
+    margin-right: 0;
+    padding-left: 3%;
+    font-size: 1.5em;
 }
 
 .panel-body {
-    font-size: 1.1em;
+    font-size: 1.7em;
     margin: 0;
-    padding: 5%;
+    padding: 3%;
 
 }
 
 .panel footer {
-    font-size: 1.2em;
+    font-size: 1.5em;
     margin: 0;
     padding-bottom: 2%;
-    padding-left: 2%;
-    
+    padding-left: 2%;    
+}
+
+.panel footer a {
+    color: darkcyan;
+}
+
+.footer {
+    font-size: 0.8em;
 }
 
 .panel-default {
     padding: 2%;
+}
+
+.footer-body {
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+    line-height: 90%;
+
 }

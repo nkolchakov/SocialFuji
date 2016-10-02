@@ -1,6 +1,6 @@
 <h1>Instagram</h1>
 <hr>
-<div class="well bs-component col-md-2">
+<div class="well bs-component">
     <form class="form-horizontal">
         <fieldset>
            	    <div class="form-group">
@@ -17,18 +17,23 @@
         </fieldset>
     </form>
 </div>
+<hr>
 
-{{#data}}
-<div class="panel panel-default">
-                <div class="panel-heading">
-                    <img src="{{profile_picture}}"></img>
-                </div>
-                <div class="panel-body">
+<div class="content-fluid">
+    {{#each data}}
+    <div class="panel panel-default list-group-item-text">
+        <div class="row">
+            <div class="panel-heading col-md-4">
+                <img class="img-rounded img-responsive" src="{{profile_picture}}"></img>
+            </div>
+            <div class="panel-body col-md-8">
                     <a tag='{{username}}' class='redirect-to-profile' href="#/instagram/user={{username}}">{{full_name}} ({{username}})</a>
-                </div>
-                    <footer>
-                        <a href="#/instagram/user={{username}}">See more</a>
-                    </footer>
-                </div>
-              </div> 
-{{/data}}
+                    <br>
+                    <strong class="footer"><a href="#/instagram/user={{username}}">See more</a></strong>
+            </div>
+        </div>
+    </div>
+</div> 
+    {{/each}} 
+<div>
+
