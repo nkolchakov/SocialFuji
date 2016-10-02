@@ -27,8 +27,14 @@
     <div class="panel-body">
         <div class="container-fluid">
             <img class="img-rounded img-responsive" src="{{images.standard_resolution.url}}"></img>
-            <p><strong>{{likes.count}}</strong> &#128077;</p>
+            <p>
+                <strong>{{likes.count}}</strong> &#128077; 
+                <button class='show-comments-btn btn btn-info' id='{{id}}' style="float: right">Show Comments</button>
+                <div class='comments-container'></div>
+            </p>
+            <div id='comment-{{id}}'></div>
         </div>
+        
     </div>
     <footer>
     {{#tags}}

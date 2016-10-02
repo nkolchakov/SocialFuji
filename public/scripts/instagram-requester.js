@@ -16,6 +16,22 @@ var instaReq = (function() {
         return promise;
     }
 
+    function getComments(mediaId) {
+        let url = `https://api.instagram.com/v1/media/${mediaId}/comments?access_token=` + ACCESS_TOKEN;
+
+        let promise = new Promise((resolve, reject) => {
+            $.ajax({
+                url: url,
+                dataType: 'jsonp',
+                success: (response) => {
+                    resolve(response);
+                }
+            });
+        });
+
+        return promise;
+    }
+
     // search for a specific user from ones with similiar name
     function getUniqueUserFromAll(username, response) {
         for (user of response.data) {
@@ -94,6 +110,8 @@ var instaReq = (function() {
                                         });
                                 });
                             });
+
+
                     });
                 }
                 return promise;
@@ -114,7 +132,9 @@ var instaReq = (function() {
                     }
                     window.location = redirectedUrl;
                 })
-            });;
+
+
+            });
     }
 
     function getTag(tagName) {
@@ -145,7 +165,37 @@ var instaReq = (function() {
                                     redirectedUrl = '#/instagram/user=' + searchVal;
                                 }
                                 window.location = redirectedUrl;
-                            })
+                            });
+
+                            $('.show-comments-btn').on('click', function(ev) {
+                                let $element = $(ev.target);
+                                let mediaId = $element.attr('id');
+                                getComments(mediaId)
+                                    .then((comments) => {
+                                        (function() {
+                                            $('#comments-container').html('');
+                                            // add here
+                                            if (comments.data.length < 1) {
+                                                //$element.parent().append('<div> no comments yet</div>');
+                                                $('#comment-' + mediaId).html('<div> no comments yet</div>');
+                                            } else {
+                                                console.log('has comment');
+                                                let commentsHtml = templateLoader.get('instagram-comments')
+                                                    .then(funcTemplate => {
+                                                        let html = funcTemplate(comments);
+                                                        console.log(html);
+                                                        $('#comment-' + mediaId).html(html);
+                                                        console.log($('#comments-container'));
+                                                    })
+                                            }
+
+                                        })();
+
+                                    })
+                            });
+
+
+
                         });
                 },
                 error: () => {
