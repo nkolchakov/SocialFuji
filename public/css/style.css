@@ -2,10 +2,12 @@ body {
     margin: 2%
 }
 
-p,
-label,
-a {
-    font-size: 27px;
+#nav-logo {
+    text-decoration: none;
+}
+
+.search-label {
+    font-size: 1.6em;
 }
 
 .wrapper {
@@ -13,18 +15,68 @@ a {
     padding: 0
 }
 
+#content {
+    margin: 0;
+    padding-left: 5%;
+}
+
 .jumbotron {
     padding: 3%
 }
+
+.thumbnail {
+    border: none;
+}
+
+.caption h3 {
+    font-size: 1.6em;
+} 
 
 .thumbnail img {
     max-width: 100%
 }
 
+.well {
+    margin: 0;
+    padding-left: 5%;
+}
 .login-images {
     width: 30%;
 }
 
 .dropdown-menu li {
     width: 230px;
+}
+
+.glyphicon {
+    font-size: 2em;
+}
+
+/*p,
+label,
+a {
+    font-size: 27px;
+}*/
+
+.panel-heading {
+    font-size: 1.3em;
+}
+
+.panel-body {
+    font-size: 1.1em;
+    margin: 0;
+    padding: 5%;
+
+}
+
+.panel footer {
+    font-size: 1.2em;
+    margin: 0;
+    padding-bottom: 2%;
+    padding-left: 2%;
+    
+}
+
+.panel-default {
+    padding: 2%;
 }

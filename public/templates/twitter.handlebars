@@ -1,13 +1,13 @@
-<h1>Instagram</h1>
+<h1>Twitter</h1>
 <hr>
-<div class="well bs-component col-md-2">
+<div class="well bs-component">
     <form class="form-horizontal">
         <fieldset>
            	    <div class="form-group">
            	        <label class="search-label col-md-10">Search by #tagname or username: </label>
                         <div class="row">
                             <div class="col-md-6">
-           	                    <input type="text" id='input-tagname-input' class="form-control" placeholder="What do you want to see on Instagram?..">
+           	                    <input type="text" id='input-tagname-input' class="form-control" placeholder="What do you want to see on Twitter?..">
                             </div>
                             <div class="col-md-2">
            	                    <button class="btn btn-success" id='search-tagname-btn'>Go!</button id="">      
@@ -17,18 +17,30 @@
         </fieldset>
     </form>
 </div>
+<hr>
 
-{{#data}}
+{{#if obj}}
+{{#obj}}
 <div class="panel panel-default">
                 <div class="panel-heading">
-                    <img src="{{profile_picture}}"></img>
+                    <img src="{{authorImage}}"></img>
+                    <a tag='{{author}}' class='redirect-to-profile' href="#/{{url}}">{{author}}</a>
                 </div>
                 <div class="panel-body">
-                    <a tag='{{username}}' class='redirect-to-profile' href="#/instagram/user={{username}}">{{full_name}} ({{username}})</a>
-                </div>
+                    <p>{{text}}</p>
                     <footer>
-                        <a href="#/instagram/user={{username}}">See more</a>
+                        <a href="#/{{url}}">See more</a>
                     </footer>
                 </div>
-              </div> 
-{{/data}}
+              </div>
+  <hr>
+{{/obj}}
+{{else}}
+<div class="alert alert-dismissible alert-info">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>Hey, </strong>you can <a href="#/twitter-login" class="alert-link">add your tweets here. Just login to your Twitter account</a>.
+              </div>
+{{/if}}
+
+
+

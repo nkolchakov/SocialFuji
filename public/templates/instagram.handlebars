@@ -1,20 +1,39 @@
 <h1>Instagram</h1>
 <hr>
-<form>
-    <label>Search by #tagname or username :</label>
-    <input type="text" id='input-tagname-input'>
-    <button class="btn btn-success" id='search-tagname-btn'>Go!</button id=''>
-</form>
+<div class="well bs-component">
+    <form class="form-horizontal">
+        <fieldset>
+           	    <div class="form-group">
+           	        <label class="search-label col-md-10">Search by #tagname or username: </label>
+                        <div class="row">
+                            <div class="col-md-6">
+           	                    <input type="text" id='input-tagname-input' class="form-control" placeholder="What do you want to see on Instagram?">
+                            </div>
+                            <div class="col-md-2">
+           	                    <button class="btn btn-success" id='search-tagname-btn'>Go!</button id="">      
+                            </div>  
+                        </div>            
+           	    </div>
+        </fieldset>
+    </form>
+</div>
 <hr>
-<br><br><br>
+
 {{#data}}
-    <p><a>{{user.full_name}}</a>: {{caption.text}}</p>
-    <img src="{{images.standard_resolution.url}}"></img>
-    <p><strong>{{likes.count}}</strong> &#128077;</p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <p><a>{{user.full_name}}</a>: {{caption.text}}</p>
+    </div>
+    <div class="panel-body">
+        <div class="container-fluid">
+            <img src="{{images.standard_resolution.url}}"></img>
+            <p><strong>{{likes.count}}</strong> &#128077;</p>
+        </div>
+    </div>
+    <footer>
     {{#tags}}
         <a href="#/instagram/tag={{this}}">#{{this}}</a>
     {{/tags}}
-    <hr>
-    <br>
+    </footer>
+</div>
 {{/data}}
-

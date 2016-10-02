@@ -1,42 +1,46 @@
-<div id="header">
-        <h1>Fujin Network</h1>
-        <img src="../images/Fujin.png" alt="logo">
-        <h2>Login/Register</h2>
-        <img src="../templates/images/facebook-logo-reversed.png" alt="facebook">
+<h1>Facebook</h1>
+<hr>
+<div class="well bs-component">
+    <form class="form-horizontal">
+        <fieldset>
+           	    <div class="form-group">
+           	        <label class="search-label col-md-10">Search on Facebook: </label>
+                        <div class="row">
+                            <div class="col-md-6">
+           	                    <input type="text" id='input-tagname-input' class="form-control" placeholder="What do you want to see on Facebook?..">
+                            </div>
+                            <div class="col-md-2">
+           	                    <button class="btn btn-success" id='search-tagname-btn'>Go!</button id="">      
+                            </div>  
+                        </div>            
+           	    </div>
+        </fieldset>
+    </form>
 </div>
-<div id = "container">
-    <input type="text" palceholder="username"/>
-    <input type="password" palceholder="password"/>
-    <button>Login</button>
-    <button>Register</button>
-</div>
+<hr>
+
+<!--Template is not ready - facebook data needed.-->
+{{#if obj}}
+{{#obj}}
+<div class="panel panel-default">
+                <div class="panel-heading">
+                    <img src="{{authorImage}}"></img>
+                    <a tag='{{author}}' class='redirect-to-profile' href="#/{{url}}">{{author}}</a>
+                </div>
+                <div class="panel-body">
+                    <p>{{text}}</p>
+                    <footer>
+                        <a href="#/{{url}}">See more</a>
+                    </footer>
+                </div>
+              </div>
+  <hr>
+{{/obj}}
+{{else}}
+<div class="alert alert-dismissible alert-info">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>Hey, </strong>you can <a href="#/facebook-login" class="alert-link">add your Facebook favourite posts here. Just login to your Facebook account</a>.
+              </div>
+{{/if}}
 
 
-<div id = "container" class="col-lg-6">
-            <div class="well bs-component">
-              <form class="form-horizontal">
-                <fieldset>
-                  <legend>Login/Register with Facebook</legend>
-                  <div class="form-group">
-                    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-                    <div class="col-lg-10">
-                      <input type="text" class="form-control" id="inputEmail" placeholder="Email">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-                    <div class="col-lg-10">
-                      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                    </div>
-                  </div>
-      
-                  <div class="form-group">
-                    <div class="col-lg-10 col-lg-offset-2">
-                      <button type="reset" class="btn btn-default">Login</button>
-                      <button type="submit" class="btn btn-primary">Register</button>
-                    </div>
-                  </div>
-                </fieldset>
-              </form>
-            <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div></div>
-          </div>
