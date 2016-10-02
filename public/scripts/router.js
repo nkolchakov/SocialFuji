@@ -46,10 +46,8 @@ const router = (function () {
                     })
                     .fail();
             })
-            .on('/twitter-search', () => {
-                let text = 'Obama';
-                let value = $('#twitters').val();
-                console.log(value);
+            .on('/twitter-search/q=:query', (params) => {
+                let text = params.query;
 
                 let search = new Promise((resolve, reject) => {
                     $.ajax({
@@ -71,22 +69,22 @@ const router = (function () {
                 Promise.all([
                     search,
                     templateLoader.get('twitter')
-                ]).then((response) => {
-                    let data = {},
-                        twits = response[0].result,
-                        template = response[1];
+                ])
+                    .then((response) => {
+                        let data = {},
+                            twits = response[0].result,
+                            template = response[1];
 
-                    data.twits = twits;
-                    let html = template(data);
-                    $('#content').html(html);
-                });
+                        data.twits = twits;
+                        let html = template(data);
+                        $('#content').html(html);
+                    })
+                    .then(() => { setBtnsEvent(); });
             })
-            .on('/twitter-post', () => {
+            .on('/twitter-search/p=:post', (params) => {
+                let text = params.post;
 
                 let post = new Promise((resolve, reject) => {
-                    //let text = ('#VALUECONTAINER').val();
-                    let text = 'Post from nodejs';
-
                     $.ajax({
                         url: 'api/post',
                         method: 'POST',
@@ -104,10 +102,10 @@ const router = (function () {
                 });
                 post
                     .then(() => {
-                        alert(`You post in Twitter`);
+                        alert(`You post "${text}"in Twitter`);
                     });
             })
-            .on('/twitter', () => {
+            .on(/twitter/, () => {
                 let loadData = new Promise((resolve, reject) => {
                     $.getJSON('api/twits')
                         .done(resolve)
@@ -117,16 +115,18 @@ const router = (function () {
                 Promise.all([
                     loadData,
                     templateLoader.get('twitter')
-                ]).then((response) => {
-                    let data = {},
-                        twits = response[0].result,
-                        template = response[1];
+                ])
+                    .then((response) => {
+                        let data = {},
+                            twits = response[0].result,
+                            template = response[1];
 
-                    data.twits = twits;
-                    console.log(data);
-                    let html = template(data);
-                    $('#content').html(html);
-                });
+                        data.twits = twits;
+                        console.log(data);
+                        let html = template(data);
+                        $('#content').html(html);
+                    })
+                    .then(() => { setBtnsEvent(); });
             })
             // .on('/instagram-login', () => {
 
@@ -159,10 +159,23 @@ const router = (function () {
 
                 verify
                     .then(() => {
-                        navigo.navigate('/twitter');
+                        navigo.navigate('#/twitter');
                     });
             })
             .resolve();
+    }
+
+    function setBtnsEvent() {
+        $('#search-btn').on('click', function () {
+            let query = $('#search-input').val();
+            location.href = 'http://localhost:1441/?#/twitter-search/q=' + query;
+        });
+
+        $('#post-btn').on('click', function () {
+            let post = $('#post-input').val();
+            $('#post-input').val('');
+            location.href = 'http://localhost:1441/?#/twitter-search/p=' + post;
+        });
     }
 
     return {
