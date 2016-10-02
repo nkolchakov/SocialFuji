@@ -46,12 +46,68 @@ const router = (function () {
                     })
                     .fail();
             })
+            .on('/twitter-search', () => {
+                let text = 'Obama';
+                let value = $('#twitters').val();
+                console.log(value);
+
+                let search = new Promise((resolve, reject) => {
+                    $.ajax({
+                        url: 'api/search',
+                        method: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            query: text
+                        }),
+                        success: function (data) {
+                            resolve(data);
+                        },
+                        error: function (err) {
+                            resolve();
+                        }
+                    });
+                });
+
+                Promise.all([
+                    search,
+                    templateLoader.get('twitter')
+                ]).then((response) => {
+                    let data = {},
+                        twits = response[0].result,
+                        template = response[1];
+
+                    data.twits = twits;
+                    let html = template(data);
+                    $('#content').html(html);
+                });
+            })
+            .on('/twitter-post', () => {
+
+                let post = new Promise((resolve, reject) => {
+                    //let text = ('#VALUECONTAINER').val();
+                    let text = 'Post from nodejs';
+
+                    $.ajax({
+                        url: 'api/post',
+                        method: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            content: text
+                        }),
+                        success: function (responese) {
+                            resolve();
+                        },
+                        error: function (err) {
+                            resolve();
+                        }
+                    });
+                });
+                post
+                    .then(() => {
+                        alert(`You post in Twitter`);
+                    });
+            })
             .on('/twitter', () => {
-                // templateLoader.get('twitter')
-                //     .then(funcTemplate => {
-                //         let html = funcTemplate();
-                //         $('#content').html(html);
-                //     });
                 let loadData = new Promise((resolve, reject) => {
                     $.getJSON('api/twits')
                         .done(resolve)

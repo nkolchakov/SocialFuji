@@ -72,6 +72,36 @@ let Twitter = (function () {
         return promise;
     }
 
+    function search(query) {
+        let params = {
+            q: query,
+            count: 20,
+            'result\_type': 'popular'
+        };
+        let promise = new Promise((resolve, reject) => {
+            twitter.getSearch(params, () => { }, function (data) {
+                data = JSON.parse(data);
+                let posts = [];
+                for (let post of data.statuses) {
+                    let currentPost = {},
+                        content = post.text.split('https');
+
+                    currentPost.author = post.user.name;
+                    currentPost.authorImage = post.user.profile_image_url;
+                    currentPost.text = content[0].trim();
+                    currentPost.url = 'https' + content[1];
+                    currentPost.image = post.entities.media ? post.entities.media[0].media_url : undefined;
+                    currentPost.date = post.created_at;
+
+                    posts.push(currentPost);
+                }
+                resolve(posts);
+            });
+        });
+
+        return promise;
+    }
+
     function post(text) {
         let params = {
             status: text
@@ -90,7 +120,8 @@ let Twitter = (function () {
         getPosts,
         post,
         signIn,
-        authorization
+        authorization,
+        search
     };
 })();
 
@@ -98,5 +129,6 @@ module.exports = {
     signIn: Twitter.signIn,
     authorization: Twitter.authorization,
     getPosts: Twitter.getPosts,
-    post: Twitter.post
+    post: Twitter.post,
+    search: Twitter.search
 };

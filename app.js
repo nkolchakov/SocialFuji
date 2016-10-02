@@ -47,6 +47,24 @@ app.get('/api/twits', function (req, res) {
         });
 });
 
+app.post('/api/search', function (req, res) {
+    Twitter.search(req.body.query)
+        .then((data) => {
+            res.json({
+                result: data
+            });
+        });
+});
+
+app.post('/api/post', function (req, res) {
+    Twitter.post(req.body.content)
+        .then(() => {
+            res.json({
+                result: 'ready'
+            });
+        });
+});
+
 app.listen(listenPort, function () {
     console.log('Server listen on port ' + listenPort);
 });
