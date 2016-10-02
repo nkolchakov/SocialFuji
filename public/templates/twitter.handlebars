@@ -10,7 +10,7 @@
            	                    <input type="text" id='search-input' class="form-control" placeholder="What do you want to see on Twitter?..">
                             </div>
                             <div class="col-md-2">
-           	                    <button class="btn btn-success" id='search-btn'>Go!</button id="">      
+           	                    <button class="btn btn-success" id='search-btn'>Go!</button>      
                             </div>  
                         </div>            
            	    </div>
@@ -44,7 +44,14 @@
                     {{#if image}}
                     <img class="img-rounded img-responsive" src="{{image}}" alt="image">
                     {{/if}}
-                    <strong class="footer"><a href="{{url}}">See more</a></strong>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <strong class="footer"><a href="{{url}}">See more</a></strong>
+                        </div>
+                        <div class="col-md-5">
+                            <p class="footer">{{date}}</p>
+                        </div>
+                    </div>
                 </div>
               </div>
   <hr>
