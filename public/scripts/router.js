@@ -10,6 +10,7 @@ const router = (function() {
             })
             .on('/instagram/tag=:tag', (params) => {
                 instaReq.getTag(params.tag)
+                window.scroll(0, 100);
             })
             .on('/instagram/user=:user', (params) => {
                 instaReq.getUser(params.user);

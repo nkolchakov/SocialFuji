@@ -16,83 +16,98 @@ var instaReq = (function() {
         return promise;
     }
 
+    // search for a specific user from ones with similiar name
+    function getUniqueUserFromAll(username, response) {
+        for (user of response.data) {
+            if (user.username === username) {
+                return user.id;
+            }
+        }
+    }
+
     function removeHashtagsFromCaption(data) {
         let d = data;
         for (post of d.data) {
+            if (!post.caption) {
+                continue;
+            }
             post.caption.text = post.caption.text.substr(0, post.caption.text.indexOf('#'));
         }
         return d;
     }
 
+    function makeUserFeedByID(userId) {
+        var feed = new Instafeed({
+            get: 'user',
+            userId: userId,
+            accessToken: ACCESS_TOKEN,
+            success: (data) => {
+                templateLoader.get('instagram')
+                    .then(funcTemplate => {
+                        let modifiedData = removeHashtagsFromCaption(data);
+                        let html = funcTemplate(modifiedData);
+                        $('#content').html(html);
+                    })
+                    // attach event to search button after template is created
 
+            },
+            error: () => {
+                alert('Profile is private');
+            },
+            mock: () => {
+
+            }
+        });
+
+        feed.run();
+    }
 
     function getUser(username) {
         let id;
         let promise;
         getUserIdByName(username)
             .then((response) => {
-                console.log(response);
                 if (response.data.length <= 1) {
                     id = response.data[0].id;
                     promise = new Promise((resolve, reject) => {
-                        var feed = new Instafeed({
-                            get: 'user',
-                            userId: id,
-                            accessToken: ACCESS_TOKEN,
-                            success: (data) => {
-                                templateLoader.get('instagram')
-                                    .then(funcTemplate => {
-                                        let modifiedData = removeHashtagsFromCaption(data);
-                                        console.log(modifiedData);
-                                        let html = funcTemplate(modifiedData);
-                                        $('#content').html(html);
-                                    })
-                                    // attach event to search button after template is created
-
-                            },
-                            error: () => {
-                                alert('Profile is private');
-                            },
-                            mock: () => {
-
-                            }
-                        });
-                        resolve(feed.run());
-                        console.log('first');
+                        makeUserFeedByID(id);
+                        resolve();
                     })
                 } else {
-                    console.log('hereee');
                     promise = new Promise((resolve, reject) => {
                         templateLoader.get('instagram-profiles')
                             .then(funcTemplate => {
                                 let html = funcTemplate(response);
                                 $('#content').html(html);
+                                resolve();
                             })
+                            // on profiles click redirect to chosen profile if it's not private
                             .then(() => {
                                 $('.redirect-to-profile').on('click', function(ev) {
                                     let anchor = $(ev.target);
-                                    console.log(anchor);
                                     let username = anchor.attr('tag');
-                                    // redirect to profile
-
-
-                                })
-                            });;
-                        console.log('first');
+                                    getUserIdByName(username)
+                                        .then((response) => {
+                                            let userId = getUniqueUserFromAll(username, response);
+                                            // make request and load template
+                                            makeUserFeedByID(userId);
+                                        });
+                                });
+                            });
                     });
                 }
                 return promise;
             })
             .then(() => {
                 $('#search-tagname-btn').on('click', function() {
-                    console.log('clicked');
                     let searchVal = $('#input-tagname-input').val();
                     let redirectedUrl;
                     if (searchVal.indexOf('#') >= 0) {
+                        // remove the #hashtag from the search and add it to the url
                         let modifiedTag = searchVal.substring(1);
-                        console.log(modifiedTag);
                         redirectedUrl = '#/instagram/tag=' + modifiedTag;
                     } else {
+                        // remove spaces from search, so it can be added to the url
                         searchVal = searchVal.replace(/\s+/g, '');
                         searchVal.toLowerCase();
                         redirectedUrl = '#/instagram/user=' + searchVal;
