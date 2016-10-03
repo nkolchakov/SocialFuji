@@ -55,14 +55,15 @@ let Twitter = (function () {
                     let posts = [];
                     for (let post of data) {
                         let currentPost = {},
-                            content = post.text.split('https');
+                            content = post.text.split('https'),
+                            date = post.created_at;
 
                         currentPost.author = post.user.name;
                         currentPost.authorImage = post.user.profile_image_url;
                         currentPost.text = content[0].trim();
                         currentPost.url = 'https' + content[1];
                         currentPost.image = post.entities.media ? post.entities.media[0].media_url : undefined;
-                        currentPost.date = post.created_at;
+                        currentPost.date = date.substr(11, 5) + '    ' + date.substr(0, 8) + date.substr(date.length - 4, 4);
 
                         posts.push(currentPost);
                     }
