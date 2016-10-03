@@ -1,11 +1,11 @@
-const router = (function () {
+const router = (function() {
     let navigo;
 
     function init() {
         navigo = new Navigo(null, false);
 
         navigo
-            .on('/index', function () {
+            .on('/index', function() {
                 templateLoader.get('home')
                     .then(funcTemplate => {
                         let html = funcTemplate();
@@ -57,19 +57,19 @@ const router = (function () {
                         data: JSON.stringify({
                             query: text
                         }),
-                        success: function (data) {
+                        success: function(data) {
                             resolve(data);
                         },
-                        error: function (err) {
+                        error: function(err) {
                             resolve();
                         }
                     });
                 });
 
                 Promise.all([
-                    search,
-                    templateLoader.get('twitter')
-                ])
+                        search,
+                        templateLoader.get('twitter')
+                    ])
                     .then((response) => {
                         let data = {},
                             twits = response[0].result,
@@ -92,10 +92,10 @@ const router = (function () {
                         data: JSON.stringify({
                             content: text
                         }),
-                        success: function (responese) {
+                        success: function(responese) {
                             resolve();
                         },
-                        error: function (err) {
+                        error: function(err) {
                             resolve();
                         }
                     });
@@ -113,9 +113,9 @@ const router = (function () {
                 });
 
                 Promise.all([
-                    loadData,
-                    templateLoader.get('twitter')
-                ])
+                        loadData,
+                        templateLoader.get('twitter')
+                    ])
                     .then((response) => {
                         let data = {},
                             twits = response[0].result,
@@ -129,8 +129,8 @@ const router = (function () {
             })
             // .on('/instagram-login', () => {
 
-            // })
-            .on('/about', () => {
+        // })
+        .on('/about', () => {
                 window.location = "#/index";
             })
             .on('/logout', () => {
@@ -147,10 +147,10 @@ const router = (function () {
                         data: JSON.stringify({
                             verifier: oauth_verifier
                         }),
-                        success: function (responese) {
+                        success: function(responese) {
                             resolve();
                         },
-                        error: function (err) {
+                        error: function(err) {
                             resolve();
                         }
                     });
@@ -161,19 +161,19 @@ const router = (function () {
                         navigo.navigate('#/twitter');
                     });
             })
-            .on('', function () {
+            .on('', function() {
                 navigo.navigate('#/index');
             })
             .resolve();
     }
 
     function setBtnsEvent() {
-        $('#search-btn').on('click', function () {
+        $('#search-btn').on('click', function() {
             let query = $('#search-input').val();
             location.href = 'http://localhost:1441/?#/twitter-search/q=' + query;
         });
 
-        $('#post-btn').on('click', function () {
+        $('#post-btn').on('click', function() {
             let post = $('#post-input').val();
             $('#post-input').val('');
             location.href = 'http://localhost:1441/?#/twitter-search/p=' + post;
@@ -183,6 +183,6 @@ const router = (function () {
     return {
         init
     };
-} ());
+}());
 
 export { router };

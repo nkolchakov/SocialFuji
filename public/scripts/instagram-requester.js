@@ -100,6 +100,7 @@ var instaReq = (function() {
                             // on profiles click redirect to chosen profile if it's not private
                             .then(() => {
                                 $('.redirect-to-profile').on('click', function(ev) {
+
                                     let anchor = $(ev.target);
                                     let username = anchor.attr('tag');
                                     getUserIdByName(username)
@@ -129,6 +130,7 @@ var instaReq = (function() {
                         searchVal = searchVal.replace(/\s+/g, '');
                         searchVal.toLowerCase();
                         redirectedUrl = '#/instagram/user=' + searchVal;
+
                     }
                     window.location = redirectedUrl;
                 })
@@ -163,6 +165,7 @@ var instaReq = (function() {
                                     searchVal = searchVal.replace(/\s+/g, '');
                                     searchVal.toLowerCase();
                                     redirectedUrl = '#/instagram/user=' + searchVal;
+
                                 }
                                 window.location = redirectedUrl;
                             });
