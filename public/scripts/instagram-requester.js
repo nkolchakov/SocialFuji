@@ -42,14 +42,14 @@ var instaReq = (function() {
     }
 
     function removeHashtagsFromCaption(data) {
-        let d = data;
-        for (post of d.data) {
+        let modifiedData = data;
+        for (post of modifiedData.data) {
             if (!post.caption) {
                 continue;
             }
             post.caption.text = post.caption.text.substr(0, post.caption.text.indexOf('#'));
         }
-        return d;
+        return modifiedData;
     }
 
     function makeUserFeedByID(userId) {
@@ -64,8 +64,6 @@ var instaReq = (function() {
                         let html = funcTemplate(modifiedData);
                         $('#content').html(html);
                     })
-                    // attach event to search button after template is created
-
             },
             error: () => {
                 alert('Profile is private');
@@ -74,7 +72,6 @@ var instaReq = (function() {
 
             }
         });
-
         feed.run();
     }
 
@@ -100,7 +97,6 @@ var instaReq = (function() {
                             // on profiles click redirect to chosen profile if it's not private
                             .then(() => {
                                 $('.redirect-to-profile').on('click', function(ev) {
-
                                     let anchor = $(ev.target);
                                     let username = anchor.attr('tag');
                                     getUserIdByName(username)
@@ -111,8 +107,6 @@ var instaReq = (function() {
                                         });
                                 });
                             });
-
-
                     });
                 }
                 return promise;
@@ -130,12 +124,9 @@ var instaReq = (function() {
                         searchVal = searchVal.replace(/\s+/g, '');
                         searchVal.toLowerCase();
                         redirectedUrl = '#/instagram/user=' + searchVal;
-
                     }
                     window.location = redirectedUrl;
                 })
-
-
             });
     }
 
@@ -182,23 +173,16 @@ var instaReq = (function() {
                                                 //$element.parent().append('<div> no comments yet</div>');
                                                 $('#comment-' + mediaId).html('<div> no comments yet</div>');
                                             } else {
-                                                console.log('has comment');
                                                 let commentsHtml = templateLoader.get('instagram-comments')
                                                     .then(funcTemplate => {
                                                         let html = funcTemplate(comments);
-                                                        console.log(html);
                                                         $('#comment-' + mediaId).html(html);
-                                                        console.log($('#comments-container'));
                                                     })
                                             }
 
                                         })();
-
                                     })
                             });
-
-
-
                         });
                 },
                 error: () => {
