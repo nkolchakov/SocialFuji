@@ -5,6 +5,26 @@ let Twitter = (function () {
     var success = function (data) {
         console.log('Data [%s]', data);
     };
+    var parseData = function (data) {
+        let posts = [];
+
+        for (let post of data) {
+            let currentPost = {},
+                content = post.text.split('https'),
+                date = post.created_at;
+
+            currentPost.author = post.user.name;
+            currentPost.authorImage = post.user.profile_image_url;
+            currentPost.text = content[0].trim();
+            currentPost.url = 'https' + content[1];
+            currentPost.image = post.entities.media ? post.entities.media[0].media_url : undefined;
+            currentPost.date = date.substr(11, 5) + '    ' + date.substr(0, 8) + date.substr(date.length - 4, 4);
+
+            posts.push(currentPost);
+        }
+
+        return posts;
+    };
 
     var Twitter = require('twitter-node-client').Twitter;
 
@@ -47,27 +67,14 @@ let Twitter = (function () {
             count: 20
         };
         let promise = new Promise((resolve, reject) => {
-            twitter.getHomeTimeline
-                (params,
-                function (err) { },
+            twitter.getHomeTimeline(
+                params,
+                function (err) {
+                    console.log(err);
+                },
                 function success(data) {
                     data = JSON.parse(data);
-                    let posts = [];
-                    for (let post of data) {
-                        let currentPost = {},
-                            content = post.text.split('https'),
-                            date = post.created_at;
-
-                        currentPost.author = post.user.name;
-                        currentPost.authorImage = post.user.profile_image_url;
-                        currentPost.text = content[0].trim();
-                        currentPost.url = 'https' + content[1];
-                        currentPost.image = post.entities.media ? post.entities.media[0].media_url : undefined;
-                        currentPost.date = date.substr(11, 5) + '    ' + date.substr(0, 8) + date.substr(date.length - 4, 4);
-
-                        posts.push(currentPost);
-                    }
-                    resolve(posts);
+                    resolve(parseData(data));
                 });
         });
         return promise;
@@ -80,24 +87,15 @@ let Twitter = (function () {
             'result\_type': 'popular'
         };
         let promise = new Promise((resolve, reject) => {
-            twitter.getSearch(params, () => { }, function (data) {
-                data = JSON.parse(data);
-                let posts = [];
-                for (let post of data.statuses) {
-                    let currentPost = {},
-                        content = post.text.split('https');
-
-                    currentPost.author = post.user.name;
-                    currentPost.authorImage = post.user.profile_image_url;
-                    currentPost.text = content[0].trim();
-                    currentPost.url = 'https' + content[1];
-                    currentPost.image = post.entities.media ? post.entities.media[0].media_url : undefined;
-                    currentPost.date = post.created_at;
-
-                    posts.push(currentPost);
-                }
-                resolve(posts);
-            });
+            twitter.getSearch(
+                params,
+                function (err) {
+                    console.log(err);
+                },
+                function (data) {
+                    data = JSON.parse(data);
+                    resolve(parseData(data.statuses));
+                });
         });
 
         return promise;
@@ -118,10 +116,10 @@ let Twitter = (function () {
     }
 
     return {
-        getPosts,
-        post,
         signIn,
         authorization,
+        getPosts,
+        post,
         search
     };
 })();

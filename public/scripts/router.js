@@ -122,7 +122,6 @@ const router = (function () {
                             template = response[1];
 
                         data.twits = twits;
-                        console.log(data);
                         let html = template(data);
                         $('#content').html(html);
                     })
@@ -161,6 +160,9 @@ const router = (function () {
                     .then(() => {
                         navigo.navigate('#/twitter');
                     });
+            })
+            .on('', function () {
+                navigo.navigate('#/index');
             })
             .resolve();
     }
