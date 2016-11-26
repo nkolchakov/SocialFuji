@@ -1,4 +1,4 @@
-var instaReq = (function() {
+var instagramController = (function() {
     const ACCESS_TOKEN = '3008598822.ba4c844.379aabfdd8214190868c0f2aa93350ab';
     const USER_ID = '3008598822'
 
@@ -43,7 +43,7 @@ var instaReq = (function() {
 
     function removeHashtagsFromCaption(data) {
         let modifiedData = data;
-        for (post of modifiedData.data) {
+        for (let post of modifiedData.data) {
             if (!post.caption) {
                 continue;
             }
@@ -203,3 +203,5 @@ var instaReq = (function() {
         getUser
     }
 })();
+
+export { instagramController };

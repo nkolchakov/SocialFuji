@@ -1,11 +1,11 @@
-let Twitter = (function () {
-    var error = function (err, response, body) {
+let Twitter = (function() {
+    var error = function(err, response, body) {
         console.log('ERROR [%s]', err);
     };
-    var success = function (data) {
+    var success = function(data) {
         console.log('Data [%s]', data);
     };
-    var parseData = function (data) {
+    var parseData = function(data) {
         let posts = [];
 
         for (let post of data) {
@@ -29,8 +29,8 @@ let Twitter = (function () {
     var Twitter = require('twitter-node-client').Twitter;
 
     var twitter = new Twitter({
-        "consumerKey": "w1oegEZoRGuBir3tjSw7LdqEy",
-        "consumerSecret": "uVMwkPmmJcczE2beh3oaESfk6P9ESwfCBcSb0LXieKQhsh71x6",
+        "consumerKey": "e4rhFxu6mUTtX4WMdu29QUPvL",
+        "consumerSecret": "V1Kb7s5uSGVOnAQMMts34erSOYcKMPyCBso6VWTLRHKDLo2WZM",
         "callBackUrl": "http://localhost:1441"
     });
 
@@ -38,7 +38,7 @@ let Twitter = (function () {
 
     function signIn() {
         let promise = new Promise((resolve, reject) => {
-            twitter.getOAuthRequestToken(function (obj) {
+            twitter.getOAuthRequestToken(function(obj) {
                 oauth.token = obj.token;
                 oauth.token_secret = obj.token_secret;
                 resolve(obj.token);
@@ -52,7 +52,7 @@ let Twitter = (function () {
         oauth.verifier = oauth_verifier;
 
         let promise = new Promise((resolve, reject) => {
-            twitter.getOAuthAccessToken(oauth, function (data) {
+            twitter.getOAuthAccessToken(oauth, function(data) {
                 twitter.accessToken = data.access_token;
                 twitter.accessTokenSecret = data.access_token_secret;
                 resolve();
@@ -69,7 +69,7 @@ let Twitter = (function () {
         let promise = new Promise((resolve, reject) => {
             twitter.getHomeTimeline(
                 params,
-                function (err) {
+                function(err) {
                     console.log(err);
                 },
                 function success(data) {
@@ -89,10 +89,10 @@ let Twitter = (function () {
         let promise = new Promise((resolve, reject) => {
             twitter.getSearch(
                 params,
-                function (err) {
+                function(err) {
                     console.log(err);
                 },
-                function (data) {
+                function(data) {
                     data = JSON.parse(data);
                     resolve(parseData(data.statuses));
                 });
@@ -107,7 +107,7 @@ let Twitter = (function () {
         };
 
         let promise = new Promise((resolve, reject) => {
-            twitter.postTweet(params, () => { }, function (response) {
+            twitter.postTweet(params, () => {}, function(response) {
                 resolve(response);
             });
         });
