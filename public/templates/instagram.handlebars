@@ -1,4 +1,4 @@
-<h1>Instagram</h1>
+<h1 id='main-title'>Instagram</h1>
 <hr>
 <div class="well bs-component">
     <form class="form-horizontal">
@@ -22,7 +22,7 @@
 {{#data}}
 <div class="panel panel-default">
     <div class="panel-heading">
-        <p><a>{{user.full_name}}</a>: {{caption.text}}</p>
+        <p><a onclick = 'scroll(0,0)'href='#/instagram/user={{user.full_name}}'>{{user.full_name}}</a>: {{caption.text}}</p>
     </div>
     <div class="panel-body">
         <div class="container-fluid">
